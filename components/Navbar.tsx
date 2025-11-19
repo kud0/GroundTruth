@@ -8,9 +8,11 @@ import { ConnectWalletButton } from './ConnectWalletButton';
 import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
-  { name: 'Markets', href: '#markets' },
-  { name: 'How It Works', href: '#how-it-works' },
-  { name: 'Admin', href: '/admin' },
+  { name: 'Platform', href: '#how-it-works' },
+  { name: 'For Agencies', href: '#problem' },
+  { name: 'Use Cases', href: '#use-cases' },
+  { name: 'Pricing', href: '#pricing' },
+  { name: 'Markets', href: '/markets' },
 ];
 
 export function Navbar() {

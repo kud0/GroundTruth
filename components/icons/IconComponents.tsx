@@ -174,3 +174,110 @@ export function EyeIcon({ className = "", size = 24 }: IconProps) {
     </svg>
   );
 }
+
+export function BriefcaseIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.2"/>
+      <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M3 12h18" stroke="currentColor" strokeWidth="2"/>
+      <rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+    </svg>
+  );
+}
+
+export function DollarIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.1"/>
+      <path d="M12 6v12M9 9h6a2 2 0 010 4H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M15 15H9a2 2 0 000 4h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.7"/>
+    </svg>
+  );
+}
+
+export function ThinkingIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.1"/>
+      <circle cx="8" cy="10" r="1.5" fill="currentColor"/>
+      <circle cx="16" cy="10" r="1.5" fill="currentColor"/>
+      <path d="M9 15c.5 1 1.5 2 3 2s2.5-1 3-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M12 8c2 0 3-1 3-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
+    </svg>
+  );
+}
+
+export function TrendDownIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 7l6 6 4-4 8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M21 17v4h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="9" cy="13" r="2" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+export function ShieldIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" fill="currentColor" opacity="0.2"/>
+      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function CheckCircleIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.2"/>
+      <path d="M8 12l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function UsersIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.2"/>
+      <path d="M3 21c0-3.5 2.5-6 6-6s6 2.5 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="17" cy="7" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
+      <path d="M21 21c0-2.5-1.5-4-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.7"/>
+    </svg>
+  );
+}
+
+export function TrendUpIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 17l6-6 4 4 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M21 7v4h-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="9" cy="11" r="2" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+export function BuildingIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.1"/>
+      <path d="M9 21V15h6v6" stroke="currentColor" strokeWidth="2"/>
+      <rect x="7" y="7" width="2" height="2" rx="0.5" fill="currentColor"/>
+      <rect x="11" y="7" width="2" height="2" rx="0.5" fill="currentColor"/>
+      <rect x="15" y="7" width="2" height="2" rx="0.5" fill="currentColor"/>
+      <rect x="7" y="11" width="2" height="2" rx="0.5" fill="currentColor"/>
+      <rect x="11" y="11" width="2" height="2" rx="0.5" fill="currentColor"/>
+      <rect x="15" y="11" width="2" height="2" rx="0.5" fill="currentColor"/>
+    </svg>
+  );
+}
+
+export function QuestionIcon({ className = "", size = 24 }: IconProps) {
+  return (
+    <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="currentColor" opacity="0.1"/>
+      <path d="M9 9a3 3 0 015.3 2c0 2-3 3-3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <circle cx="12" cy="18" r="1" fill="currentColor"/>
+    </svg>
+  );
+}
