@@ -6,7 +6,7 @@ import { Navbar } from '@/components/Navbar'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 
 export const metadata: Metadata = {
-  title: 'Collective Intelligence | Enterprise Prediction Markets',
+  title: 'GroundTruth | Collective Intelligence Platform',
   description: 'Harness your team\'s wisdom through on-chain prediction markets. Real stakes. Real transparency. Real results.',
 }
 

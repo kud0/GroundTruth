@@ -98,7 +98,7 @@ export function Navbar() {
                     </div>
                   </motion.div>
                   <span className="text-xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    Predict
+                    GroundTruth
                   </span>
                 </Link>
 
