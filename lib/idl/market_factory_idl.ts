@@ -1,0 +1,94 @@
+export const MARKET_FACTORY_IDL = {
+  "address": "FANZBSDyC6JjQViH5aXiuVqg2gsEJQZRSMdVGWnTn5zz",
+  "metadata": {
+    "name": "market_factory",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "close_market",
+      "discriminator": [88, 154, 248, 186, 48, 14, 123, 244],
+      "accounts": [
+        { "name": "market", "writable": true },
+        { "name": "authority", "signer": true, "relations": ["market"] }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_market",
+      "discriminator": [103, 226, 97, 235, 200, 188, 251, 254],
+      "accounts": [
+        {
+          "name": "market",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              { "kind": "const", "value": [109, 97, 114, 107, 101, 116] },
+              { "kind": "account", "path": "authority" },
+              { "kind": "arg", "path": "question" }
+            ]
+          }
+        },
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "system_program", "address": "11111111111111111111111111111111" }
+      ],
+      "args": [
+        { "name": "question", "type": "string" },
+        { "name": "close_time", "type": "i64" },
+        { "name": "resolution_time", "type": "i64" }
+      ]
+    },
+    {
+      "name": "resolve_market",
+      "discriminator": [155, 23, 80, 173, 46, 74, 23, 239],
+      "accounts": [
+        { "name": "market", "writable": true },
+        { "name": "authority", "signer": true, "relations": ["market"] }
+      ],
+      "args": [{ "name": "outcome", "type": "bool" }]
+    }
+  ],
+  "accounts": [
+    { "name": "Market", "discriminator": [219, 190, 213, 55, 0, 227, 198, 154] }
+  ],
+  "errors": [
+    { "code": 6000, "name": "QuestionTooLong", "msg": "Question must be 200 characters or less" },
+    { "code": 6001, "name": "InvalidCloseTime", "msg": "Close time must be in the future" },
+    { "code": 6002, "name": "InvalidResolutionTime", "msg": "Resolution time must be after close time" },
+    { "code": 6003, "name": "MarketNotOpen", "msg": "Market is not open" },
+    { "code": 6004, "name": "MarketNotClosed", "msg": "Market is not closed" },
+    { "code": 6005, "name": "TooEarlyToResolve", "msg": "Too early to resolve market" }
+  ],
+  "types": [
+    {
+      "name": "Market",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "pubkey" },
+          { "name": "question", "type": "string" },
+          { "name": "close_time", "type": "i64" },
+          { "name": "resolution_time", "type": "i64" },
+          { "name": "status", "type": { "defined": { "name": "MarketStatus" } } },
+          { "name": "outcome", "type": { "option": "bool" } },
+          { "name": "total_yes_amount", "type": "u64" },
+          { "name": "total_no_amount", "type": "u64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "MarketStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          { "name": "Open" },
+          { "name": "Closed" },
+          { "name": "Resolved" }
+        ]
+      }
+    }
+  ]
+} as const;
