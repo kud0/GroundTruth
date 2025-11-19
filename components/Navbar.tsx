@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ConnectWalletButton } from './ConnectWalletButton';
 import { ThemeToggle } from './ThemeToggle';
+import TruthPrismLogo from './logos/TruthPrismLogo';
 
 const navLinks = [
   { name: 'Platform', href: '#how-it-works' },
@@ -77,29 +78,15 @@ export function Navbar() {
             <div className="relative px-6 py-4">
               <div className="flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center space-x-2 group">
+                <Link href="/" className="flex items-center space-x-4 group">
                   <motion.div
-                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                     className="relative"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 via-pink-600 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/50 group-hover:shadow-purple-500/80 transition-shadow">
-                      <svg
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                        />
-                      </svg>
-                    </div>
+                    <TruthPrismLogo size={56} animated={true} />
                   </motion.div>
-                  <span className="text-xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 dark:from-purple-400 dark:via-pink-400 dark:to-purple-400 bg-clip-text text-transparent">
                     GroundTruth
                   </span>
                 </Link>

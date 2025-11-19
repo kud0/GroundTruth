@@ -6,6 +6,7 @@ import { GetUSDCBanner } from '@/components/GetUSDCBanner';
 import { USDCHelper } from '@/components/USDCHelper';
 import { useMarkets } from '@/hooks/useMarkets';
 import { ConnectWalletButton } from '@/components/ConnectWalletButton';
+import AnimatedBackground from '@/components/AnimatedBackground';
 import GradientText from '@/components/ui/GradientText';
 import MagneticButton from '@/components/ui/MagneticButton';
 import { motion } from 'framer-motion';
@@ -30,10 +31,19 @@ export default function MarketsPage() {
   const { markets, loading, error } = useMarkets();
 
   return (
-    <main className="relative min-h-screen text-gray-900 dark:text-white pt-24">
+    <main className="relative min-h-screen text-gray-900 dark:text-white">
+      {/* Animated Background with moving orbs and particles */}
+      <AnimatedBackground />
+
       {/* Active Markets Section */}
-      <section id="markets" className="relative py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="markets" className="relative py-32 pt-44 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16 space-y-4"
             initial="hidden"
