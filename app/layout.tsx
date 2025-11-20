@@ -1,32 +1,23 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { SolanaWalletProvider } from '@/components/WalletProvider'
-import SmoothScroll from '@/components/SmoothScroll'
-import { Navbar } from '@/components/Navbar'
-import { ThemeProvider } from '@/contexts/ThemeContext'
+import type { Metadata } from 'next';
+import './globals.css';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 export const metadata: Metadata = {
   title: 'GroundTruth | Collective Intelligence Platform',
-  description: 'Harness your team\'s wisdom through on-chain prediction markets. Real stakes. Real transparency. Real results.',
-}
+  description:
+    "McKinsey tells you what they think. We show you what your employees know. Replace $500K consultant bias with blockchain-verified employee forecasts.",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <ThemeProvider>
-          <SolanaWalletProvider>
-            <SmoothScroll>
-              <Navbar />
-              {children}
-            </SmoothScroll>
-          </SolanaWalletProvider>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

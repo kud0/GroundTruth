@@ -143,14 +143,16 @@ export default function Pricing() {
 
 function PricingCard({ icon: Icon, iconGradient, iconBorder, iconColor, name, price, period, savings, description, features, cta, highlighted }: any) {
   return (
-    <motion.div variants={fadeInUp} className={highlighted ? 'md:-mt-4' : ''}>
+    <motion.div variants={fadeInUp} className="relative">
+      {highlighted && (
+        <div className="flex justify-center mb-2">
+          <div className="px-6 py-2 rounded-full bg-gradient-to-r from-purple-700 to-pink-700 text-white text-sm font-black tracking-wide whitespace-nowrap shadow-xl shadow-purple-500/60 border border-white/20">
+            MOST POPULAR
+          </div>
+        </div>
+      )}
       <TiltCard className="h-full" tiltIntensity={4}>
         <div className={`p-8 h-full flex flex-col relative ${highlighted ? 'border-2 border-purple-500/30' : ''}`}>
-          {highlighted && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold whitespace-nowrap">
-              MOST POPULAR
-            </div>
-          )}
 
           <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${iconGradient} border ${iconBorder} flex items-center justify-center mb-6`}>
             <Icon className={iconColor} size={28} />

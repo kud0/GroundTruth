@@ -1,32 +1,48 @@
+/* CUSTOM FONTS */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Manrope:wght@200;400;800&family=Syne:wght@400;700;800&display=swap');
+
 @import "tailwindcss";
 
 @variant dark (&:where(.dark, .dark *));
 
+/* CSS VARIABLES */
 :root {
-  /* Light mode - clean white */
-  --foreground-rgb: 30, 30, 30;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 250, 250, 252;
+  /* DARK THEME (DEFAULT) */
+  --bg-color: #030303;
+  --text-color: #e0e0e0;
+  --text-dim: rgba(255, 255, 255, 0.5);
+  --accent: #14F195; /* Solana Green */
+  --secondary: #9945FF; /* Solana Purple */
+  --error: #ff3b30;
+  --card-bg: rgba(10,10,10,0.7);
+  --card-border: rgba(255,255,255,0.1);
+  --scanline-color: rgba(20, 241, 149, 0.03);
+  --cursor-blend: difference;
 }
 
-.dark {
-  /* Dark mode - your perfect dark design */
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+html.light {
+  /* LIGHT THEME overrides */
+  --bg-color: #e8e8e5; /* Architectural Grey/Beige */
+  --text-color: #1a1a1a;
+  --text-dim: rgba(0, 0, 0, 0.5);
+  --accent: #008f53; /* Darker Emerald for contrast */
+  --secondary: #6d28d9;
+  --card-bg: rgba(255,255,255,0.6);
+  --card-border: rgba(0,0,0,0.1);
+  --scanline-color: rgba(0, 0, 0, 0.02);
+  --cursor-blend: normal;
 }
 
-html {
-  background: white;
-}
-
-html.dark {
-  background: #0a0118;
-}
-
+/* BODY */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: transparent;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color 1s cubic-bezier(0.16, 1, 0.3, 1), color 1s ease;
 }
 
 @keyframes fade-in {
@@ -131,4 +147,241 @@ body {
 .animate-float-text-slow {
   animation: float-text-slow 12s ease-in-out infinite;
   animation-delay: 4s;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, .display-font {
+  font-family: 'Syne', sans-serif;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* CUSTOM CURSOR */
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  transition: background-color 0.5s;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-color);
+  opacity: 0.5;
+  transition: width 0.2s, height 0.2s, border-color 0.5s, transform 0.3s;
+  mix-blend-mode: var(--cursor-blend);
+}
+
+.cursor-outline.hover {
+  transform: translate(-50%, -50%) scale(2) !important;
+}
+
+/* WEBGL CONTAINER */
+#webgl-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  transition: opacity 1s;
+}
+
+/* SCANLINE EFFECT */
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 9000;
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--scanline-color) 50%, rgba(0,0,0,0) 100%);
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% { bottom: 100%; }
+  100% { bottom: -100%; }
+}
+
+/* NAVIGATION CORNERS */
+.nav-corner {
+  position: fixed;
+  z-index: 100;
+  padding: 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: color 1s;
+}
+
+.nav-corner.tl { top: 0; left: 0; }
+.nav-corner.tr { top: 0; right: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.nav-corner.bl { bottom: 0; left: 0; }
+.nav-corner.br { bottom: 0; right: 0; text-align: right; }
+
+/* THEME TOGGLE */
+.theme-switch {
+  cursor: pointer;
+  border: 1px solid var(--text-dim);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  background: rgba(0,0,0,0.05);
+}
+
+.theme-switch:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* HERO */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 11vw, 12rem);
+  line-height: 0.8;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  mix-blend-mode: difference;
+  color: var(--text-color);
+}
+
+html.light .hero-title {
+  mix-blend-mode: normal;
+}
+
+/* HORIZONTAL SCROLL */
+.horizontal-wrapper {
+  overflow: hidden;
+}
+
+.horizontal-container {
+  width: 400%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  box-sizing: border-box;
+  border-right: 1px solid var(--card-border);
+  position: relative;
+  transition: border-color 1s;
+}
+
+/* DATA CARDS */
+.data-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 1s, border-color 1s;
+}
+
+.data-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+}
+
+/* LOADER */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* UTILITIES */
+.hover-trigger {
+  cursor: pointer;
+}
+
+/* Hide default cursor on interactive elements */
+* {
+  cursor: none !important;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Override transition for animations that need to be fast */
+.cursor-dot, .cursor-outline, [data-gsap] {
+  transition-duration: 0.3s !important;
+}
+
+/* MOBILE RESPONSIVE - Vertical stacking */
+@media (max-width: 767px) {
+  .horizontal-wrapper {
+    overflow: visible;
+  }
+
+  .horizontal-container {
+    width: 100% !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+  }
+
+  .panel h2 {
+    font-size: 2.5rem !important;
+  }
+
+  .data-card {
+    padding: 2rem !important;
+  }
 }

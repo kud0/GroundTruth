@@ -13,8 +13,8 @@ export function ConnectWalletButton() {
 
   if (!mounted) {
     return (
-      <button className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg">
-        Loading...
+      <button className="mono text-xs px-6 py-3 border hover-trigger" style={{ borderColor: 'var(--text-dim)', color: 'var(--text-dim)' }}>
+        LOADING...
       </button>
     );
   }
@@ -22,17 +22,18 @@ export function ConnectWalletButton() {
   if (publicKey) {
     return (
       <div className="flex items-center gap-3">
-        <div className="px-4 py-2 bg-green-900/30 rounded-lg">
-          <div className="text-xs text-gray-400">Connected:</div>
-          <div className="font-mono text-sm font-bold text-green-600">
+        <div className="mono text-xs px-4 py-3 border" style={{ borderColor: 'var(--accent)', background: 'rgba(20, 241, 149, 0.05)' }}>
+          <div style={{ color: 'var(--text-dim)' }}>CONNECTED</div>
+          <div className="font-bold mt-1" style={{ color: 'var(--accent)' }}>
             {publicKey.toString().slice(0, 4)}...{publicKey.toString().slice(-4)}
           </div>
         </div>
         <button
           onClick={disconnect}
-          className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700"
+          className="mono text-xs px-6 py-3 border hover-trigger transition-all hover:bg-[var(--error)] hover:text-white"
+          style={{ borderColor: 'var(--error)', color: 'var(--error)' }}
         >
-          Disconnect
+          DISCONNECT
         </button>
       </div>
     );
@@ -46,19 +47,14 @@ export function ConnectWalletButton() {
       );
 
       if (phantomWallet) {
-        // Select the wallet
         select(phantomWallet.adapter.name);
-
-        // Wait for selection to complete
         await new Promise(resolve => setTimeout(resolve, 800));
 
-        // Manually trigger connect if wallet is selected but not connected
         if (wallet && !publicKey) {
           try {
             await connect();
           } catch (connectError) {
             console.error('Connect error:', connectError);
-            // User likely rejected, ignore
           }
         }
       } else {
@@ -67,7 +63,6 @@ export function ConnectWalletButton() {
       }
     } catch (error: any) {
       console.error('Error connecting wallet:', error);
-      // Only show alert if it's not a user rejection
       if (!error?.message?.includes('User rejected') && !error?.message?.includes('User cancelled')) {
         alert('Error connecting wallet: ' + (error?.message || String(error)));
       }
@@ -79,18 +74,13 @@ export function ConnectWalletButton() {
       onClick={handleConnect}
       disabled={connecting}
       type="button"
-      className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 disabled:bg-gray-400 transition flex items-center gap-2"
+      className="mono text-xs px-6 py-3 border hover-trigger transition-all hover:bg-[var(--accent)] hover:text-white disabled:opacity-50"
+      style={{ borderColor: 'var(--text-color)', color: 'var(--text-color)' }}
     >
       {connecting ? (
-        <>🔄 Connecting...</>
+        '● CONNECTING...'
       ) : (
-        <>
-          <svg width="20" height="20" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M96 0H32C14.3 0 0 14.3 0 32v64c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32z" fill="#AB9FF2"/>
-            <path d="M88.8 64c0-13.7-11.1-24.8-24.8-24.8S39.2 50.3 39.2 64 50.3 88.8 64 88.8 88.8 77.7 88.8 64z" fill="white"/>
-          </svg>
-          Connect Phantom
-        </>
+        '○ CONNECT WALLET'
       )}
     </button>
   );

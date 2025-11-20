@@ -96,19 +96,26 @@ export function Navbar() {
                   {navLinks.map((link) => {
                     const isActive = pathname === link.href;
                     const isAnchor = link.href.startsWith('#');
+                    const isOnHomepage = pathname === '/';
 
                     const handleClick = (e: React.MouseEvent) => {
                       if (isAnchor) {
-                        e.preventDefault();
-                        const element = document.querySelector(link.href);
-                        element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        if (isOnHomepage) {
+                          // On homepage: just scroll to section
+                          e.preventDefault();
+                          const element = document.querySelector(link.href);
+                          element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                          // On other pages: navigate to homepage with hash
+                          window.location.href = `/${link.href}`;
+                        }
                       }
                     };
 
                     return (
                       <Link
                         key={link.href}
-                        href={link.href}
+                        href={isAnchor && !isOnHomepage ? `/${link.href}` : link.href}
                         onClick={handleClick}
                         className="relative px-4 py-2 rounded-lg group"
                       >
@@ -203,13 +210,20 @@ export function Navbar() {
                 {navLinks.map((link, index) => {
                   const isActive = pathname === link.href;
                   const isAnchor = link.href.startsWith('#');
+                  const isOnHomepage = pathname === '/';
 
                   const handleClick = (e: React.MouseEvent) => {
                     if (isAnchor) {
-                      e.preventDefault();
-                      const element = document.querySelector(link.href);
-                      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      setIsMobileMenuOpen(false);
+                      if (isOnHomepage) {
+                        // On homepage: just scroll to section
+                        e.preventDefault();
+                        const element = document.querySelector(link.href);
+                        element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setIsMobileMenuOpen(false);
+                      } else {
+                        // On other pages: navigate to homepage with hash
+                        window.location.href = `/${link.href}`;
+                      }
                     }
                   };
 
@@ -221,7 +235,7 @@ export function Navbar() {
                       transition={{ delay: index * 0.1 }}
                     >
                       <Link
-                        href={link.href}
+                        href={isAnchor && !isOnHomepage ? `/${link.href}` : link.href}
                         onClick={handleClick}
                         className={`block px-4 py-3 rounded-lg transition-all ${
                           isActive
