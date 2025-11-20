@@ -57,7 +57,7 @@ export function BettingCard({ market }: { market: Market }) {
 
     try {
       const marketPubkey = new PublicKey(market.publicKey);
-      await placeBet(wallet, marketPubkey, prediction === 'YES', betAmount);
+      await placeBet(wallet, marketPubkey, betAmount, prediction);
 
       triggerConfetti();
       setShowSuccess(true);
