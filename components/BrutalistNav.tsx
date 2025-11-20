@@ -43,12 +43,13 @@ export function BrutalistNav() {
         </a>
       </div>
 
-      <div className="nav-corner bl hover-trigger">
+      <a href="/admin" className="nav-corner bl hover-trigger">
         <span className="mono text-xs" style={{ color: 'var(--text-dim)' }}>
-          SCROLL
+          ADMIN
         </span>
-        <br />↓
-      </div>
+        <br />
+        CREATE MARKET
+      </a>
 
       <div className="nav-corner br hover-trigger">
         <span className="mono text-xs" style={{ color: 'var(--text-dim)' }}>

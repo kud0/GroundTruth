@@ -1,0 +1,16 @@
+import { SolanaWalletProvider } from '@/components/WalletProvider';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <ThemeProvider>
+      <SolanaWalletProvider>
+        {children}
+      </SolanaWalletProvider>
+    </ThemeProvider>
+  );
+}
