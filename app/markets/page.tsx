@@ -125,7 +125,7 @@ export default function MarketsPage() {
                   </div>
                   <div className="text-center">
                     <div className="text-4xl font-bold mono mb-2" style={{ color: 'var(--accent)' }}>
-                      {markets.filter(m => m.status === 'open').length}
+                      {markets.filter(m => m.status === 'Open').length}
                     </div>
                     <div className="mono text-xs" style={{ color: 'var(--text-dim)' }}>
                       OPEN FOR BETTING
